@@ -40,6 +40,17 @@ w_mepc(uint64 x)
   asm volatile("csrw mepc, %0" : : "r" (x));
 }
 
+// SUPERPAGE DEFINED
+#define SUPERPAGE_SIZE (2 * 1024 * 1024)  // 2MB
+#define SUPERPAGE_SHIFT 21  // log2(2MB)
+
+// Check if address is 2MB aligned
+#define IS_SUPERPAGE_ALIGNED(addr) (((uint64)(addr) & (SUPERPAGE_SIZE - 1)) == 0)
+
+// Helper macros
+#define SUPERPAGE_ROUNDUP(sz)  (((sz)+SUPERPAGE_SIZE-1) & ~(SUPERPAGE_SIZE-1))
+#define SUPERPAGE_ROUNDDOWN(a) (((a)) & ~(SUPERPAGE_SIZE-1))
+
 // Supervisor Status Register, sstatus
 
 #define SSTATUS_SPP (1L << 8)  // Previous mode, 1=Supervisor, 0=User

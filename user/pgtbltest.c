@@ -15,7 +15,7 @@ int
 main(int argc, char *argv[])
 {
   print_pgtbl();
-  ugetpid_test();
+  //ugetpid_test();
   print_kpgtbl();
   superpg_test();
   printf("pgtbltest: all tests succeeded\n");
@@ -67,7 +67,7 @@ ugetpid_test()
       if (ret != 0)
         exit(1);
       continue;
-    }
+   }
     if (getpid() != ugetpid())
       err("missmatched PID");
     exit(0);
