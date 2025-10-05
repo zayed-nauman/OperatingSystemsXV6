@@ -123,3 +123,18 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+uint64
+sys_rdcycles(void) {
+   return r_cycle();  
+}
+uint64
+sys_rdtime(void) {
+  return r_time();    
+}
+
+uint64
+sys_rdinstret(void) {
+  return  r_instret();
+}
+

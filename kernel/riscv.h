@@ -71,6 +71,20 @@ r_sip()
   return x;
 }
 
+static inline uint64
+r_cycle() {
+  uint64 x;
+  asm volatile("rdcycle %0" : "=r" (x));
+  return x;
+}
+
+static inline uint64
+r_instret() {
+  uint64 x;
+  asm volatile("rdinstret %0" : "=r" (x));
+  return x;
+}
+
 static inline void 
 w_sip(uint64 x)
 {

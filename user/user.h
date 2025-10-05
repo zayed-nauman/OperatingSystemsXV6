@@ -26,6 +26,10 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
+uint64 rdcycles(void);
+uint64 rdtime(void);
+uint64 rdinstret(void);
+
 #ifdef LAB_NET
 int bind(uint32);
 int unbind(uint32);
